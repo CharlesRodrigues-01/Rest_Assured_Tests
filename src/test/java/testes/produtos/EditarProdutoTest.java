@@ -1,4 +1,4 @@
-package produtos;
+package testes.produtos;
 
 import bases.BaseProduto;
 import io.restassured.http.ContentType;

@@ -1,4 +1,4 @@
-package Carrinhos;
+package testes.carrinhos;
 
 import bases.BaseCarrinho;
 import io.restassured.http.ContentType;

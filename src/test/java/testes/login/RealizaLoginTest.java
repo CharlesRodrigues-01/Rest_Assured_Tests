@@ -1,4 +1,4 @@
-package login;
+package testes.login;
 
 import bases.BaseApi;
 import io.restassured.http.ContentType;

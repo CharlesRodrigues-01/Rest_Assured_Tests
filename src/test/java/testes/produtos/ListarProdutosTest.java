@@ -1,4 +1,4 @@
-package produtos;
+package testes.produtos;
 
 import bases.BaseApi;
 import org.apache.http.HttpStatus;

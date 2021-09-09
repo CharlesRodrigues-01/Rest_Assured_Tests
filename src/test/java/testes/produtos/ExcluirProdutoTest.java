@@ -1,4 +1,4 @@
-package produtos;
+package testes.produtos;
 
 import bases.BaseProduto;
 import org.apache.http.HttpStatus;

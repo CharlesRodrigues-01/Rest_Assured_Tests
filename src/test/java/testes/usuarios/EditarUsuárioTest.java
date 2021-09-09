@@ -1,4 +1,4 @@
-package usuarios;
+package testes.usuarios;
 
 import bases.BaseApi;
 import io.restassured.http.ContentType;
