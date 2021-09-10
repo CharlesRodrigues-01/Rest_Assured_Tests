@@ -1,7 +1,7 @@
 package service;
 
 import io.restassured.http.ContentType;
-import model.LoginRequest;
+import br.com.zup.serverest.model.LoginRequest;
 
 import static io.restassured.RestAssured.given;
 import static service.UsuarioServices.*;

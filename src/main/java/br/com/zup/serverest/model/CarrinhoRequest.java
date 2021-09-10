@@ -1,4 +1,4 @@
-package model;
+package br.com.zup.serverest.model;
 
 import java.util.List;
 

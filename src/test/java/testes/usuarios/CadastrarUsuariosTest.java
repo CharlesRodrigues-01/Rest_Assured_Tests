@@ -2,7 +2,7 @@ package testes.usuarios;
 
 import bases.BaseApi;
 import io.restassured.http.ContentType;
-import model.UsuarioRequest;
+import br.com.zup.serverest.model.UsuarioRequest;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

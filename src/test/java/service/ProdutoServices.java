@@ -1,7 +1,7 @@
 package service;
 
 import io.restassured.http.ContentType;
-import model.ProdutoRequest;
+import br.com.zup.serverest.model.ProdutoRequest;
 import org.apache.http.HttpStatus;
 
 import static io.restassured.RestAssured.given;
@@ -10,10 +10,7 @@ import static org.hamcrest.Matchers.equalTo;
 public class ProdutoServices {
 
     public static ProdutoRequest construirProduto() {
-        ProdutoRequest produto = new ProdutoRequest("TV",
-                2900,
-                "LG",
-                5);
+        ProdutoRequest produto = new ProdutoRequest("TV", 2900, "LG", 5);
         return produto;
     }
 

@@ -1,11 +1,9 @@
 package service;
 
 import io.restassured.http.ContentType;
-import model.UsuarioRequest;
-import org.apache.http.HttpStatus;
+import br.com.zup.serverest.model.UsuarioRequest;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
 
 public class UsuarioServices {
 

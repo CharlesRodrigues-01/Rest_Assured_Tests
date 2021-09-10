@@ -2,8 +2,8 @@ package testes.carrinhos;
 
 import bases.BaseCarrinho;
 import io.restassured.http.ContentType;
-import model.CarrinhoRequest;
-import model.ProdutoParaCarrinhoRequest;
+import br.com.zup.serverest.model.CarrinhoRequest;
+import br.com.zup.serverest.model.ProdutoParaCarrinhoRequest;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -121,8 +121,8 @@ public class CadastrarCarrinhoTest extends BaseCarrinho {
     }
 
     @Test
-    @DisplayName("Não deve cadastrar um carrinho sem permissão de administrador")
-    public void naoDeveCadastrarCarrinhoSemPermissao(){
+    @DisplayName("Não deve cadastrar um carrinho sem autorização")
+    public void naoDeveCadastrarCarrinhoSemAutorizacao(){
 
         produtos.add(idProdutoCadastrado);
 

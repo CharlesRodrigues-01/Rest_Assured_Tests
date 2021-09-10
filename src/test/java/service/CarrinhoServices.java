@@ -1,8 +1,8 @@
 package service;
 
 import io.restassured.http.ContentType;
-import model.CarrinhoRequest;
-import model.ProdutoParaCarrinhoRequest;
+import br.com.zup.serverest.model.CarrinhoRequest;
+import br.com.zup.serverest.model.ProdutoParaCarrinhoRequest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,6 @@ public class CarrinhoServices {
 
         for(String produto : produtosCadastrados) {
             String idProduto = get("produtos/" + produto).then().extract().path("_id");
-            Integer quantidade = get("produtos/" + produto).then().extract().path("quantidade");
             ProdutoParaCarrinhoRequest produtoParaCarrinho = new ProdutoParaCarrinhoRequest(idProduto, quantidadePedido);
             listaDeProdutos.add(produtoParaCarrinho);
         }
@@ -42,7 +41,7 @@ public class CarrinhoServices {
 
     public static void excluirCarrinho(String id, String token){
         given().header("Authorization", token)
-                .when().delete("carrinhos/concluir-compra")
+                .when().delete("carrinhos/cancelar-compra")
                 .then()
                 .log().all();
     }
