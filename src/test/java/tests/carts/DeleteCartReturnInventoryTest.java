@@ -1,6 +1,9 @@
 package tests.carts;
 
 import bases.BaseCart;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,6 +21,9 @@ public class DeleteCartReturnInventoryTest extends BaseCart {
     private List<String> products = new ArrayList<>();
 
     @Test
+    @Epic("EPIC - Cart Test Epic")
+    @Feature("FEATURE - Deleting carts and return inventory")
+    @Story("STORY - Carts")
     @DisplayName("Must delete a product and return inventory")
     public void mustDeleteProductAndReturnInventory() {
 
@@ -35,6 +41,9 @@ public class DeleteCartReturnInventoryTest extends BaseCart {
     }
 
     @Test
+    @Epic("EPIC - Cart Test Epic")
+    @Feature("FEATURE - Deleting carts and return inventory")
+    @Story("STORY - Carts")
     @DisplayName("Should return error when cart doesn't exist")
     public void shouldReturnErrorWhenCartDoesNotExist() {
 
@@ -49,7 +58,9 @@ public class DeleteCartReturnInventoryTest extends BaseCart {
     }
 
     @Test
-    @DisplayName("Must not delete a  cart by user without authentication")
+    @Epic("EPIC - Cart Test Epic")
+    @Feature("FEATURE - Deleting carts and return inventory")
+    @Story("STORY - Carts")    @DisplayName("Must not delete a  cart by user without authentication")
     public void mustNotDeleteCartByUserWithoutAuthentication() {
 
         products.add(ProductId);
@@ -66,5 +77,4 @@ public class DeleteCartReturnInventoryTest extends BaseCart {
 
         deleteCart(token);
     }
-
 }

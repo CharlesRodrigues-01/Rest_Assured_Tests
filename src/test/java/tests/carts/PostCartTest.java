@@ -1,6 +1,9 @@
 package tests.carts;
 
 import bases.BaseCart;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import io.restassured.http.ContentType;
 import br.com.zup.serverest.model.Cart;
 import br.com.zup.serverest.model.ProductToCart;
@@ -21,6 +24,9 @@ public class PostCartTest extends BaseCart {
     private List<ProductToCart> productsList = new ArrayList<>();
 
     @Test
+    @Epic("EPIC - Cart Test Epic")
+    @Feature("FEATURE - Posting carts")
+    @Story("STORY - Carts")
     @DisplayName("Must create a cart")
     public void mustCreateCart(){
 
@@ -39,6 +45,9 @@ public class PostCartTest extends BaseCart {
     }
 
     @Test
+    @Epic("EPIC - Cart Test Epic")
+    @Feature("FEATURE - Posting carts")
+    @Story("STORY - Carts")
     @DisplayName("Should not create a cart with duplicate products")
     public void shouldNotCreateCartWithDuplicateProducts(){
 
@@ -57,6 +66,9 @@ public class PostCartTest extends BaseCart {
     }
 
     @Test
+    @Epic("EPIC - Cart Test Epic")
+    @Feature("FEATURE - Posting carts")
+    @Story("STORY - Carts")
     @DisplayName("Should not create a cart with unregistered products")
     public void shouldNotCreateCartWithUnregisteredProducts(){
 
@@ -78,6 +90,9 @@ public class PostCartTest extends BaseCart {
     }
 
     @Test
+    @Epic("EPIC - Cart Test Epic")
+    @Feature("FEATURE - Posting carts")
+    @Story("STORY - Carts")
     @DisplayName("Should not create a cart if the stock quantity is insufficient")
     public void shouldNotCreateCartIfTheStockQuantityIsInsufficient(){
 
@@ -98,6 +113,9 @@ public class PostCartTest extends BaseCart {
     }
 
     @Test
+    @Epic("EPIC - Cart Test Epic")
+    @Feature("FEATURE - Posting carts")
+    @Story("STORY - Carts")
     @DisplayName("Must not create more than one cart by user")
     public void mustNotCreateMoreThanOneCartByUser(){
 
@@ -117,6 +135,9 @@ public class PostCartTest extends BaseCart {
     }
 
     @Test
+    @Epic("EPIC - Cart Test Epic")
+    @Feature("FEATURE - Posting carts")
+    @Story("STORY - Carts")
     @DisplayName("Must not create a cart by user without authentication")
     public void mustNotCreateCartByUserWithoutAuthentication(){
 

@@ -1,6 +1,9 @@
 package tests.carts;
 
 import bases.BaseApi;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -42,6 +45,9 @@ public class GetCartsTest extends BaseApi {
     }
 
     @Test
+    @Epic("EPIC - Cart Test Epic")
+    @Feature("FEATURE - Getting carts")
+    @Story("STORY - Carts")
     @DisplayName("Must find a cart by ID")
     public void mustFindCartByID(){
 
@@ -56,6 +62,9 @@ public class GetCartsTest extends BaseApi {
     }
 
     @Test
+    @Epic("EPIC - Cart Test Epic")
+    @Feature("FEATURE - Getting carts")
+    @Story("STORY - Carts")
     @DisplayName("Must find a cart by total price")
     public void mustFindCartByTotalPrice(){
         var totalPrice = "2900";
@@ -71,6 +80,9 @@ public class GetCartsTest extends BaseApi {
     }
 
     @Test
+    @Epic("EPIC - Cart Test Epic")
+    @Feature("FEATURE - Getting carts")
+    @Story("STORY - Carts")
     @DisplayName("Must find a cart by total amount")
     public void mustFindCartByTotalAmount(){
         var totalAmount = "1";
@@ -86,6 +98,9 @@ public class GetCartsTest extends BaseApi {
     }
 
     @Test
+    @Epic("EPIC - Cart Test Epic")
+    @Feature("FEATURE - Getting carts")
+    @Story("STORY - Carts")
     @DisplayName("Must find a cart by user id")
     public void mustFindCartByUserId(){
 

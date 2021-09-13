@@ -1,6 +1,9 @@
 package tests.login;
 
 import bases.BaseApi;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import io.restassured.http.ContentType;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.DisplayName;
@@ -14,6 +17,9 @@ import static br.com.zup.serverest.builder.UserBuilder.*;
 public class LoginTest extends BaseApi {
 
     @Test
+    @Epic("EPIC - Login Test Epic")
+    @Feature("FEATURE - Generating token")
+    @Story("STORY - Login")
     @DisplayName("Must generate a user token")
     public void mustGenerateUserToken(){
 
@@ -31,6 +37,9 @@ public class LoginTest extends BaseApi {
     }
 
     @Test
+    @Epic("EPIC - Login Test Epic")
+    @Feature("FEATURE - Generating token")
+    @Story("STORY - Login")
     @DisplayName("Must not generate a token with invalid e-mail")
     public void mustNotGenerateTokenWithInvalidEmail(){
 
@@ -47,6 +56,9 @@ public class LoginTest extends BaseApi {
     }
 
     @Test
+    @Epic("EPIC - Login Test Epic")
+    @Feature("FEATURE - Generating token")
+    @Story("STORY - Login")
     @DisplayName("Must not generate a token with unregistered e-mail")
     public void mustNotGenerateTokenWithUnregisteredEmail(){
 
@@ -63,6 +75,9 @@ public class LoginTest extends BaseApi {
     }
 
     @Test
+    @Epic("EPIC - Login Test Epic")
+    @Feature("FEATURE - Generating token")
+    @Story("STORY - Login")
     @DisplayName("Must not generate a token with blank e-mail")
     public void mustNotGenerateTokenWithBlankEmail(){
 
@@ -79,6 +94,9 @@ public class LoginTest extends BaseApi {
     }
 
     @Test
+    @Epic("EPIC - Login Test Epic")
+    @Feature("FEATURE - Generating token")
+    @Story("STORY - Login")
     @DisplayName("Must not generate a token with non-existent password")
     public void mustNotGenerateTokenWithNonExistentPassword(){
 
@@ -95,6 +113,9 @@ public class LoginTest extends BaseApi {
     }
 
     @Test
+    @Epic("EPIC - Login Test Epic")
+    @Feature("FEATURE - Generating token")
+    @Story("STORY - Login")
     @DisplayName("Must not generate a token with blank password")
     public void mustNotGenerateTokenWithBlankPassword(){
 

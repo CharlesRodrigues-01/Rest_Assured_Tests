@@ -1,0 +1,1 @@
+{"uuid":"85f5799f-6236-4f43-a4d1-2ddb7d190d11","name":"Must not delete a product by user without authentication","children":["5ad6a2f9-2e0d-4923-9567-25ee8ef4d7b3"],"befores":[],"afters":[],"links":[],"start":1631555675380,"stop":1631555675873}
