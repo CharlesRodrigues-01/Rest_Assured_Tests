@@ -1,11 +1,13 @@
 package tests.users;
 
 import bases.BaseApi;
+import br.com.zup.serverest.factory.SimulationDataFactory;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.Nested;
 
 import static br.com.zup.serverest.builder.UserBuilder.*;
 import static io.restassured.RestAssured.given;
@@ -48,6 +50,7 @@ public class GetUsersTest extends BaseApi {
     @Story("STORY - User")
     @DisplayName("Should find a user by name")
     void shouldFindUserByName(){
+
         var name = "Authorized User";
 
         given().param("nome", name)
@@ -84,7 +87,7 @@ public class GetUsersTest extends BaseApi {
     @Story("STORY - User")
     @DisplayName("Should find a user by password")
     void shouldFindUserByPassword(){
-        var password = "12345";
+        var password = "12test";
 
         given().param("password", password)
                 .when().get("usuarios")

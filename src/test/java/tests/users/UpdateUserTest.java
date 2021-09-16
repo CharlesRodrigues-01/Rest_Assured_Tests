@@ -1,6 +1,7 @@
 package tests.users;
 
 import bases.BaseApi;
+import br.com.zup.serverest.factory.SimulationDataFactory;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -15,7 +16,8 @@ import static br.com.zup.serverest.builder.UserBuilder.*;
 
 class UpdateUserTest extends BaseApi {
 
-    private String nonExistentId = "123";
+    protected static SimulationDataFactory simulationDataFactory = new SimulationDataFactory();
+    private final String nonExistentId = simulationDataFactory.generateId();
 
     @Test
     @Epic("EPIC - User Test Epic")
@@ -46,9 +48,9 @@ class UpdateUserTest extends BaseApi {
         var userId = createUser();
 
         var updatedUser = buildUser();
-        updatedUser.setNome("Updated User");
-        updatedUser.setEmail("updated@qa.com.br");
-        updatedUser.setPassword("321");
+        updatedUser.setNome(simulationDataFactory.genereteName());
+        updatedUser.setEmail(simulationDataFactory.genereteEmail());
+        updatedUser.setPassword(simulationDataFactory.generetePassword());
 
         given()
                 .contentType(ContentType.JSON)
@@ -71,8 +73,8 @@ class UpdateUserTest extends BaseApi {
         var userId = createUser();
 
         var updatedUser = buildUser();
-        updatedUser.setNome("Updated User");
-        updatedUser.setPassword("321");
+        updatedUser.setNome(simulationDataFactory.genereteName());
+        updatedUser.setPassword(simulationDataFactory.generetePassword());
 
         given()
                 .contentType(ContentType.JSON)

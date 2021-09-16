@@ -1,6 +1,7 @@
 package tests.login;
 
 import bases.BaseApi;
+import br.com.zup.serverest.factory.SimulationDataFactory;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -16,7 +17,9 @@ import static br.com.zup.serverest.builder.UserBuilder.*;
 
  class LoginTest extends BaseApi {
 
-    @Test
+  protected static SimulationDataFactory simulationDataFactory = new SimulationDataFactory();
+
+  @Test
     @Epic("EPIC - Login Test Epic")
     @Feature("FEATURE - Generating token")
     @Story("STORY - Login")
@@ -63,7 +66,7 @@ import static br.com.zup.serverest.builder.UserBuilder.*;
     void shouldNotGenerateTokenWithUnregisteredEmail(){
 
         var login = buildLogin();
-        login.setEmail("sicrano@qa.com");
+        login.setEmail(simulationDataFactory.genereteEmail());
 
         given()
                 .contentType(ContentType.JSON)
@@ -101,7 +104,7 @@ import static br.com.zup.serverest.builder.UserBuilder.*;
     void shouldNotGenerateTokenWithNonExistentPassword(){
 
         var login = buildLogin();
-        login.setPassword("123");
+        login.setPassword(simulationDataFactory.generetePassword());
 
         given()
                 .contentType(ContentType.JSON)

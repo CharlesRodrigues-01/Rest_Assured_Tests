@@ -1,6 +1,7 @@
 package tests.products;
 
 import bases.BaseProduct;
+import br.com.zup.serverest.factory.SimulationDataFactory;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -20,8 +21,9 @@ import static org.hamcrest.Matchers.equalTo;
 
 class DeleteProductTest extends BaseProduct {
 
-    private String nonExistentId = "123";
-    private List<String> products = new ArrayList<>();
+    protected static SimulationDataFactory simulationDataFactory = new SimulationDataFactory();
+    private final String nonExistentId = simulationDataFactory.generateId();
+    private final List<String> products = new ArrayList<>();
 
     @Test
     @Epic("EPIC - Product Test Epic")

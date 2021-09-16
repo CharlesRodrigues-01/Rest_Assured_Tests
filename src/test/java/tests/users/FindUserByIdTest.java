@@ -1,6 +1,7 @@
 package tests.users;
 
 import bases.BaseApi;
+import br.com.zup.serverest.factory.SimulationDataFactory;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -13,6 +14,8 @@ import static org.hamcrest.Matchers.equalTo;
 import static br.com.zup.serverest.builder.UserBuilder.*;
 
 class FindUserByIdTest extends BaseApi {
+
+    protected static SimulationDataFactory simulationDataFactory = new SimulationDataFactory();
 
     @Test
     @Epic("EPIC - User Test Epic")
@@ -39,7 +42,7 @@ class FindUserByIdTest extends BaseApi {
     @Story("STORY - User")
     @DisplayName("Should return error when user doesn't exist")
     void shouldReturnErrorWhenUserDoesNotExist(){
-        var nonExistentId = "123";
+        var nonExistentId = simulationDataFactory.generateId();
 
         given()
                 .when().get("usuarios/"+ nonExistentId)

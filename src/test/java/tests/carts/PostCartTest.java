@@ -1,6 +1,7 @@
 package tests.carts;
 
 import bases.BaseCart;
+import br.com.zup.serverest.factory.SimulationDataFactory;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -20,6 +21,7 @@ import static org.hamcrest.Matchers.equalTo;
 
 class PostCartTest extends BaseCart {
 
+    protected static SimulationDataFactory simulationDataFactory = new SimulationDataFactory();
     private List<String> products = new ArrayList<>();
     private List<ProductToCart> productsList = new ArrayList<>();
 
@@ -72,7 +74,7 @@ class PostCartTest extends BaseCart {
     @DisplayName("Should not create a cart with unregistered products")
     void shouldNotCreateCartWithUnregisteredProducts(){
 
-        var productId = "123";
+        var productId = simulationDataFactory.generateId();
         var amount = 1;
         ProductToCart productToCart = new ProductToCart(productId, amount);
         productsList.add(productToCart);

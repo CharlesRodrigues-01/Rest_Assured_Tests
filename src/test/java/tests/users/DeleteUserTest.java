@@ -1,6 +1,7 @@
 package tests.users;
 
 import bases.BaseApi;
+import br.com.zup.serverest.factory.SimulationDataFactory;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -21,7 +22,8 @@ import static br.com.zup.serverest.builder.UserBuilder.*;
 
 class DeleteUserTest extends BaseApi {
 
-    private String nonExistentId = "123";
+    protected static SimulationDataFactory simulationDataFactory = new SimulationDataFactory();
+    private String nonExistentId = simulationDataFactory.generateId();
 
     @Test
     @Epic("EPIC - User Test Epic")

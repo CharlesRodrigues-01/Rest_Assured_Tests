@@ -1,6 +1,7 @@
 package tests.products;
 
 import bases.BaseProduct;
+import br.com.zup.serverest.factory.SimulationDataFactory;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -16,7 +17,8 @@ import static br.com.zup.serverest.builder.UserBuilder.*;
 
 class UpdateProductTest extends BaseProduct {
 
-    private String nonExistentId = "123";
+    protected static SimulationDataFactory simulationDataFactory = new SimulationDataFactory();
+    private String nonExistentId = simulationDataFactory.generateId();
 
     @Test
     @Epic("EPIC - Product Test Epic")
@@ -46,12 +48,13 @@ class UpdateProductTest extends BaseProduct {
     void shouldEditAnExistingUser(){
 
         var productId = createProduct(token);
+        var amount = 5;
 
         var updatedProduct = buildProduct();
-        updatedProduct.setNome("Celular");
-        updatedProduct.setPreco(2900);
-        updatedProduct.setDescricao("S9");
-        updatedProduct.setQuantidade(5);
+        updatedProduct.setNome(simulationDataFactory.genereteNameProduct());
+        updatedProduct.setPreco(simulationDataFactory.generetePriceProduct() );
+        updatedProduct.setDescricao(simulationDataFactory.genereteDescriptionProduct());
+        updatedProduct.setQuantidade(amount);
 
         given()
                 .header("Authorization", token)

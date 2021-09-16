@@ -1,6 +1,7 @@
 package tests.carts;
 
 import bases.BaseApi;
+import br.com.zup.serverest.factory.SimulationDataFactory;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -20,6 +21,8 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 class FindCartByIdTest extends BaseApi {
+
+    protected static SimulationDataFactory simulationDataFactory = new SimulationDataFactory();
 
     @Test
     @Epic("EPIC - Cart Test Epic")
@@ -54,7 +57,7 @@ class FindCartByIdTest extends BaseApi {
     @Story("STORY - Carts")
     @DisplayName("Should return error when cart doesn't exist")
     void shouldReturnErrorWhenCartDoesNotExist(){
-        var nonExistentId = "123";
+        var nonExistentId = simulationDataFactory.generateId();
 
         given()
                 .when().get("carrinhos/"+ nonExistentId)
