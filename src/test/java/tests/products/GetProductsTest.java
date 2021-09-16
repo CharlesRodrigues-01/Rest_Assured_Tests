@@ -39,8 +39,8 @@ public class GetProductsTest extends BaseApi {
     @Epic("EPIC - Product Test Epic")
     @Feature("FEATURE - Getting products")
     @Story("STORY - Products")
-    @DisplayName("Must find a product by ID")
-    public void mustFindProductByID(){
+    @DisplayName("Should find a product by ID")
+    void shouldFindProductByID(){
 
         given().param("_id", productId)
                 .when().get("produtos")
@@ -56,8 +56,8 @@ public class GetProductsTest extends BaseApi {
     @Epic("EPIC - Product Test Epic")
     @Feature("FEATURE - Getting products")
     @Story("STORY - Products")
-    @DisplayName("Must find a product by name")
-    public void mustFindProductByName(){
+    @DisplayName("Should find a product by name")
+    void shouldFindProductByName(){
         var name = "TV";
 
         given().param("nome", name)
@@ -74,8 +74,8 @@ public class GetProductsTest extends BaseApi {
     @Epic("EPIC - Product Test Epic")
     @Feature("FEATURE - Getting products")
     @Story("STORY - Products")
-    @DisplayName("Must find a product by price")
-    public void mustFindProductByPrice(){
+    @DisplayName("Should find a product by price")
+    void shouldFindProductByPrice(){
         var price = "2900";
 
         given().param("preco", price)
@@ -92,8 +92,8 @@ public class GetProductsTest extends BaseApi {
     @Epic("EPIC - Product Test Epic")
     @Feature("FEATURE - Getting products")
     @Story("STORY - Products")
-    @DisplayName("Must find a product by description")
-    public void mustFindProductByDescription(){
+    @DisplayName("Should find a product by description")
+    void shouldFindProductByDescription(){
         var description = "LG";
 
         given().param("descricao", description)
@@ -110,8 +110,8 @@ public class GetProductsTest extends BaseApi {
     @Epic("EPIC - Product Test Epic")
     @Feature("FEATURE - Getting products")
     @Story("STORY - Products")
-    @DisplayName("Must find a product by amount")
-    public void mustFindProductByAmount(){
+    @DisplayName("Should find a product by amount")
+    void shouldFindProductByAmount(){
         var amount = "5";
 
         given().param("quantidade", amount)

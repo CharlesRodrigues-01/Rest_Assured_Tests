@@ -48,8 +48,8 @@ public class GetCartsTest extends BaseApi {
     @Epic("EPIC - Cart Test Epic")
     @Feature("FEATURE - Getting carts")
     @Story("STORY - Carts")
-    @DisplayName("Must find a cart by ID")
-    public void mustFindCartByID(){
+    @DisplayName("Should find a cart by ID")
+    void shouldFindCartByID(){
 
         given().param("_id", cartId)
                 .when().get("carrinhos")
@@ -65,8 +65,8 @@ public class GetCartsTest extends BaseApi {
     @Epic("EPIC - Cart Test Epic")
     @Feature("FEATURE - Getting carts")
     @Story("STORY - Carts")
-    @DisplayName("Must find a cart by total price")
-    public void mustFindCartByTotalPrice(){
+    @DisplayName("Should find a cart by total price")
+    void shouldFindCartByTotalPrice(){
         var totalPrice = "2900";
 
         given().param("precoTotal", totalPrice)
@@ -83,8 +83,8 @@ public class GetCartsTest extends BaseApi {
     @Epic("EPIC - Cart Test Epic")
     @Feature("FEATURE - Getting carts")
     @Story("STORY - Carts")
-    @DisplayName("Must find a cart by total amount")
-    public void mustFindCartByTotalAmount(){
+    @DisplayName("Should find a cart by total amount")
+    void shouldFindCartByTotalAmount(){
         var totalAmount = "1";
 
         given().param("quantidadeTotal", totalAmount)
@@ -101,8 +101,8 @@ public class GetCartsTest extends BaseApi {
     @Epic("EPIC - Cart Test Epic")
     @Feature("FEATURE - Getting carts")
     @Story("STORY - Carts")
-    @DisplayName("Must find a cart by user id")
-    public void mustFindCartByUserId(){
+    @DisplayName("Should find a cart by user id")
+    void shouldFindCartByUserId(){
 
         given().param("idUsuario", userId)
                 .when().get("carrinhos")

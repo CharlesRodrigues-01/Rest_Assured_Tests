@@ -14,7 +14,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static br.com.zup.serverest.builder.ProductBuilder.*;
 import static br.com.zup.serverest.builder.UserBuilder.*;
 
-public class UpdateProductTest extends BaseProduct {
+class UpdateProductTest extends BaseProduct {
 
     private String nonExistentId = "123";
 
@@ -22,8 +22,8 @@ public class UpdateProductTest extends BaseProduct {
     @Epic("EPIC - Product Test Epic")
     @Feature("FEATURE - Updating products")
     @Story("STORY - Products")
-    @DisplayName("Must create an product if ID doesn't exist")
-    public void mustCreateAnProductIfIDDoesNotExist(){
+    @DisplayName("Should create an product if ID doesn't exist")
+    void shouldCreateAnProductIfIDDoesNotExist(){
 
         String productId = given()
                 .header("Authorization", token)
@@ -42,8 +42,8 @@ public class UpdateProductTest extends BaseProduct {
     @Epic("EPIC - Product Test Epic")
     @Feature("FEATURE - Updating products")
     @Story("STORY - Products")
-    @DisplayName("Must edit an existing user")
-    public void mustEditAnExistingUser(){
+    @DisplayName("Should edit an existing user")
+    void shouldEditAnExistingUser(){
 
         var productId = createProduct(token);
 
@@ -69,8 +69,8 @@ public class UpdateProductTest extends BaseProduct {
     @Epic("EPIC - Product Test Epic")
     @Feature("FEATURE - Updating products")
     @Story("STORY - Products")
-    @DisplayName("Must not update or create product with existing e-mail and non-existent ID")
-    public void mustNotUpdateOrCreateProductWithExistingEmailAndNonExistentID(){
+    @DisplayName("Should not update or create product with existing e-mail and non-existent ID")
+    void shouldNotUpdateOrCreateProductWithExistingEmailAndNonExistentID(){
 
         var productId = createProduct(token);
 
@@ -90,8 +90,8 @@ public class UpdateProductTest extends BaseProduct {
     @Epic("EPIC - Product Test Epic")
     @Feature("FEATURE - Updating products")
     @Story("STORY - Products")
-    @DisplayName("Must not update or create product without admin permission")
-    public void mustNotUpdateOrCreateProductWithoutAdminPermission(){
+    @DisplayName("Should not update or create product without admin permission")
+    void shouldNotUpdateOrCreateProductWithoutAdminPermission(){
 
         var adminUser = "false";
         var nonAdminUser = "true";

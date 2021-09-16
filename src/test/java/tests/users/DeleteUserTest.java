@@ -19,7 +19,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static br.com.zup.serverest.builder.UserBuilder.*;
 
-public class DeleteUserTest extends BaseApi {
+class DeleteUserTest extends BaseApi {
 
     private String nonExistentId = "123";
 
@@ -27,8 +27,8 @@ public class DeleteUserTest extends BaseApi {
     @Epic("EPIC - User Test Epic")
     @Feature("FEATURE - Deleting users")
     @Story("STORY - User")
-    @DisplayName("Must delete a user by ID")
-    public void mustDeleteUserByID() {
+    @DisplayName("Should delete a user by ID")
+    void shouldDeleteUserByID() {
         var userId = createUser();
 
         given()
@@ -45,7 +45,7 @@ public class DeleteUserTest extends BaseApi {
     @Feature("FEATURE - Deleting users")
     @Story("STORY - User")
     @DisplayName("Should return error when user doesn't exist")
-    public void shouldReturnErrorWhenUserDoesNotExist() {
+    void shouldReturnErrorWhenUserDoesNotExist() {
 
         given()
                 .when().delete("usuarios/"+ nonExistentId)
@@ -60,8 +60,8 @@ public class DeleteUserTest extends BaseApi {
     @Epic("EPIC - User Test Epic")
     @Feature("FEATURE - Deleting users")
     @Story("STORY - User")
-    @DisplayName("Must not delete user with registered cart")
-    public void mustNotDeleteUserWithRegisteredCart() {
+    @DisplayName("Should not delete user with registered cart")
+    void shouldNotDeleteUserWithRegisteredCart() {
 
         List<String> products = new ArrayList<>();
 

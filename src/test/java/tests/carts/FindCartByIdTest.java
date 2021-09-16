@@ -19,14 +19,14 @@ import static br.com.zup.serverest.builder.UserBuilder.*;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class FindCartByIdTest extends BaseApi {
+class FindCartByIdTest extends BaseApi {
 
     @Test
     @Epic("EPIC - Cart Test Epic")
     @Feature("FEATURE - Finding carts")
     @Story("STORY - Carts")
-    @DisplayName("Must find a cart by ID")
-    public void mustFindCartByID(){
+    @DisplayName("Should find a cart by ID")
+    void shouldFindCartByID(){
 
         var userId = createUser();
         var token = getToken();
@@ -53,7 +53,7 @@ public class FindCartByIdTest extends BaseApi {
     @Feature("FEATURE - Finding carts")
     @Story("STORY - Carts")
     @DisplayName("Should return error when cart doesn't exist")
-    public void shouldReturnErrorWhenCartDoesNotExist(){
+    void shouldReturnErrorWhenCartDoesNotExist(){
         var nonExistentId = "123";
 
         given()

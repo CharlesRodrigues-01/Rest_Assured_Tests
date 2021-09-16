@@ -2,7 +2,6 @@ package br.com.zup.serverest.builder;
 
 import br.com.zup.serverest.model.Cart;
 import br.com.zup.serverest.model.ProductToCart;
-import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 
 import java.util.ArrayList;
@@ -12,6 +11,8 @@ import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 
 public class CartBuilder {
+
+    private CartBuilder() {}
 
     public static Cart buildCart(List<String> products) {
 

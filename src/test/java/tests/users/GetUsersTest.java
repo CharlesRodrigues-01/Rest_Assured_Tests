@@ -29,8 +29,8 @@ public class GetUsersTest extends BaseApi {
     @Epic("EPIC - User Test Epic")
     @Feature("FEATURE - Getting users")
     @Story("STORY - User")
-    @DisplayName("Must find a user by ID")
-    public void mustFindUserByID(){
+    @DisplayName("Should find a user by ID")
+    void shouldFindUserByID(){
 
         given().param("_id", userId)
                 .when().get("usuarios")
@@ -46,8 +46,8 @@ public class GetUsersTest extends BaseApi {
     @Epic("EPIC - User Test Epic")
     @Feature("FEATURE - Getting users")
     @Story("STORY - User")
-    @DisplayName("Must find a user by name")
-    public void mustFindUserByName(){
+    @DisplayName("Should find a user by name")
+    void shouldFindUserByName(){
         var name = "Authorized User";
 
         given().param("nome", name)
@@ -64,8 +64,8 @@ public class GetUsersTest extends BaseApi {
     @Epic("EPIC - User Test Epic")
     @Feature("FEATURE - Getting users")
     @Story("STORY - User")
-    @DisplayName("Must find a user by e-mail")
-    public void mustFindUserByEmail(){
+    @DisplayName("Should find a user by e-mail")
+    void shouldFindUserByEmail(){
         var email = "authorized@qa.com.br";
 
         given().param("email", email)
@@ -82,9 +82,9 @@ public class GetUsersTest extends BaseApi {
     @Epic("EPIC - User Test Epic")
     @Feature("FEATURE - Getting users")
     @Story("STORY - User")
-    @DisplayName("Must find a user by password")
-    public void mustFindUserByPassword(){
-        var password = "1234";
+    @DisplayName("Should find a user by password")
+    void shouldFindUserByPassword(){
+        var password = "12345";
 
         given().param("password", password)
                 .when().get("usuarios")

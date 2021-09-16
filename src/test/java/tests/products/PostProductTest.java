@@ -14,14 +14,14 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static br.com.zup.serverest.builder.ProductBuilder.*;
 
-public class PostProductTest extends BaseProduct {
+class PostProductTest extends BaseProduct {
 
     @Test
     @Epic("EPIC - Product Test Epic")
     @Feature("FEATURE - Posting products")
     @Story("STORY - Products")
-    @DisplayName("Must create a product")
-    public void mustCreateProduct(){
+    @DisplayName("Should create a product")
+    void shouldCreateProduct(){
 
         String productId = given()
                 .contentType(ContentType.JSON)
@@ -40,8 +40,8 @@ public class PostProductTest extends BaseProduct {
     @Epic("EPIC - Product Test Epic")
     @Feature("FEATURE - Posting products")
     @Story("STORY - Products")
-    @DisplayName("Must not create a product with existing name")
-    public void mustNotCreateUserWithExistingName(){
+    @DisplayName("Should not create a product with existing name")
+    void shouldNotCreateUserWithExistingName(){
 
         var productId = createProduct(token);
 
@@ -61,8 +61,8 @@ public class PostProductTest extends BaseProduct {
     @Epic("EPIC - Product Test Epic")
     @Feature("FEATURE - Posting products")
     @Story("STORY - Products")
-    @DisplayName("Must not create a product by user without authentication")
-    public void mustNotCreateProductByUserWithoutAuthentication(){
+    @DisplayName("Should not create a product by user without authentication")
+    void shouldNotCreateProductByUserWithoutAuthentication(){
 
         given()
                 .contentType(ContentType.JSON)
@@ -78,8 +78,8 @@ public class PostProductTest extends BaseProduct {
     @Epic("EPIC - Product Test Epic")
     @Feature("FEATURE - Posting products")
     @Story("STORY - Products")
-    @DisplayName("Must not create product without admin permission")
-    public void mustNotCreateProductWithoutAdminPermission(){
+    @DisplayName("Should not create product without admin permission")
+    void shouldNotCreateProductWithoutAdminPermission(){
 
         var adminUser = "false";
         var nonAdminUser = "true";

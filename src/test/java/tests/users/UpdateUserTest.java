@@ -13,7 +13,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static br.com.zup.serverest.builder.UserBuilder.*;
 
-public class UpdateUserTest extends BaseApi {
+class UpdateUserTest extends BaseApi {
 
     private String nonExistentId = "123";
 
@@ -21,8 +21,8 @@ public class UpdateUserTest extends BaseApi {
     @Epic("EPIC - User Test Epic")
     @Feature("FEATURE - Updating users")
     @Story("STORY - User")
-    @DisplayName("Must create an user if ID doesn't exist")
-    public void mustCreateAnUserIfIDDoesNotExist(){
+    @DisplayName("Should create an user if ID doesn't exist")
+    void shouldCreateAnUserIfIDDoesNotExist(){
 
         String userId = given()
                 .contentType(ContentType.JSON)
@@ -40,8 +40,8 @@ public class UpdateUserTest extends BaseApi {
     @Epic("EPIC - User Test Epic")
     @Feature("FEATURE - Updating users")
     @Story("STORY - User")
-    @DisplayName("Must edit an existing user")
-    public void mustEditAnExistingUser(){
+    @DisplayName("Should edit an existing user")
+    void shouldEditAnExistingUser(){
 
         var userId = createUser();
 
@@ -65,8 +65,8 @@ public class UpdateUserTest extends BaseApi {
     @Epic("EPIC - User Test Epic")
     @Feature("FEATURE - Updating users")
     @Story("STORY - User")
-    @DisplayName("Must not update or create user with existing e-mail and non-existent ID")
-    public void mustNotUpdateOrCreateUserWithExistingEmailAndNonExistentID(){
+    @DisplayName("Should not update or create user with existing e-mail and non-existent ID")
+    void shouldNotUpdateOrCreateUserWithExistingEmailAndNonExistentID(){
 
         var userId = createUser();
 

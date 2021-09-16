@@ -14,14 +14,14 @@ import static br.com.zup.serverest.builder.UserBuilder.*;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class FindProductByIdTest extends BaseApi {
+class FindProductByIdTest extends BaseApi {
 
     @Test
     @Epic("EPIC - Product Test Epic")
     @Feature("FEATURE - Finding products")
     @Story("STORY - Products")
-    @DisplayName("Must find a product by ID")
-    public void mustFindProductByID(){
+    @DisplayName("Should find a product by ID")
+    void shouldFindProductByID(){
 
         var userId = createUser();
         var token = getToken();
@@ -44,7 +44,7 @@ public class FindProductByIdTest extends BaseApi {
     @Feature("FEATURE - Finding products")
     @Story("STORY - Products")
     @DisplayName("Should return error when product doesn't exist")
-    public void shouldReturnErrorWhenProductDoesNotExist(){
+    void shouldReturnErrorWhenProductDoesNotExist(){
         var nonExistentId = "123";
 
         given()

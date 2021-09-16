@@ -7,10 +7,12 @@ import static io.restassured.RestAssured.given;
 
 public class UserBuilder {
 
-   public static User buildUser() {
+    private UserBuilder() {}
+
+    public static User buildUser() {
        return new User("Authorized User",
                "authorized@qa.com.br",
-               "1234",
+               "12345",
                "true");
     }
 

@@ -2,6 +2,9 @@ package bases;
 
 import org.junit.jupiter.api.BeforeAll;
 
+import java.io.FileInputStream;
+import java.util.Properties;
+
 import static io.restassured.RestAssured.baseURI;
 
 public abstract class BaseApi {
@@ -11,3 +14,4 @@ public abstract class BaseApi {
         baseURI = "https://serverest.dev/";
     }
 }
+

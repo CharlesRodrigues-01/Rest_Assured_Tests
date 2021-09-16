@@ -18,7 +18,7 @@ import static br.com.zup.serverest.builder.UserBuilder.updateUserPermission;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class DeleteProductTest extends BaseProduct {
+class DeleteProductTest extends BaseProduct {
 
     private String nonExistentId = "123";
     private List<String> products = new ArrayList<>();
@@ -27,8 +27,8 @@ public class DeleteProductTest extends BaseProduct {
     @Epic("EPIC - Product Test Epic")
     @Feature("FEATURE - Deleting products")
     @Story("STORY - Products")
-    @DisplayName("Must delete a product by ID")
-    public void mustDeleteProductByID() {
+    @DisplayName("Should delete a product by ID")
+    void shouldDeleteProductByID() {
 
         var productId = createProduct(token);
 
@@ -47,7 +47,7 @@ public class DeleteProductTest extends BaseProduct {
     @Feature("FEATURE - Deleting products")
     @Story("STORY - Products")
     @DisplayName("Should return error when product doesn't exist")
-    public void shouldReturnErrorWhenProductDoesNotExist() {
+    void shouldReturnErrorWhenProductDoesNotExist() {
 
         given()
                 .header("Authorization", token)
@@ -63,8 +63,8 @@ public class DeleteProductTest extends BaseProduct {
     @Epic("EPIC - Product Test Epic")
     @Feature("FEATURE - Deleting products")
     @Story("STORY - Products")
-    @DisplayName("Must not delete a product by user without authentication")
-    public void mustNotDeleteProductByUserWithoutAuthentication() {
+    @DisplayName("Should not delete a product by user without authentication")
+    void shouldNotDeleteProductByUserWithoutAuthentication() {
 
         var productId = createProduct(token);
 
@@ -84,8 +84,8 @@ public class DeleteProductTest extends BaseProduct {
     @Epic("EPIC - Product Test Epic")
     @Feature("FEATURE - Deleting products")
     @Story("STORY - Products")
-    @DisplayName("Must not delete a product without admin permission")
-    public void mustNotDeleteProductWithoutAdminPermission() {
+    @DisplayName("Should not delete a product without admin permission")
+    void shouldNotDeleteProductWithoutAdminPermission() {
 
         var adminUser = "false";
         var nonAdminUser = "true";
@@ -109,8 +109,8 @@ public class DeleteProductTest extends BaseProduct {
     @Epic("EPIC - Product Test Epic")
     @Feature("FEATURE - Deleting products")
     @Story("STORY - Products")
-    @DisplayName("Must not delete product with registered cart")
-    public void mustNotDeleteProductWithRegisteredCart() {
+    @DisplayName("Should not delete product with registered cart")
+    void shouldNotDeleteProductWithRegisteredCart() {
 
         var productId = createProduct(token);
         products.add(productId);

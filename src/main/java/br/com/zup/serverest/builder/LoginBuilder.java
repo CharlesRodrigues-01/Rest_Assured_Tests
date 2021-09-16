@@ -7,6 +7,8 @@ import static io.restassured.RestAssured.given;
 
 public class LoginBuilder {
 
+    private LoginBuilder() {}
+
     public static Login buildLogin() {
         return new Login(UserBuilder.buildUser().getEmail(), UserBuilder.buildUser().getPassword());
     }

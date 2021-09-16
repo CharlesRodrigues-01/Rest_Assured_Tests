@@ -18,7 +18,7 @@ import static br.com.zup.serverest.builder.CartBuilder.*;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class PostCartTest extends BaseCart {
+class PostCartTest extends BaseCart {
 
     private List<String> products = new ArrayList<>();
     private List<ProductToCart> productsList = new ArrayList<>();
@@ -27,8 +27,8 @@ public class PostCartTest extends BaseCart {
     @Epic("EPIC - Cart Test Epic")
     @Feature("FEATURE - Posting carts")
     @Story("STORY - Carts")
-    @DisplayName("Must create a cart")
-    public void mustCreateCart(){
+    @DisplayName("Should create a cart")
+    void shouldCreateCart(){
 
         products.add(ProductId);
 
@@ -49,7 +49,7 @@ public class PostCartTest extends BaseCart {
     @Feature("FEATURE - Posting carts")
     @Story("STORY - Carts")
     @DisplayName("Should not create a cart with duplicate products")
-    public void shouldNotCreateCartWithDuplicateProducts(){
+    void shouldNotCreateCartWithDuplicateProducts(){
 
         products.add(ProductId);
         products.add(ProductId);
@@ -70,7 +70,7 @@ public class PostCartTest extends BaseCart {
     @Feature("FEATURE - Posting carts")
     @Story("STORY - Carts")
     @DisplayName("Should not create a cart with unregistered products")
-    public void shouldNotCreateCartWithUnregisteredProducts(){
+    void shouldNotCreateCartWithUnregisteredProducts(){
 
         var productId = "123";
         var amount = 1;
@@ -94,7 +94,7 @@ public class PostCartTest extends BaseCart {
     @Feature("FEATURE - Posting carts")
     @Story("STORY - Carts")
     @DisplayName("Should not create a cart if the stock quantity is insufficient")
-    public void shouldNotCreateCartIfTheStockQuantityIsInsufficient(){
+    void shouldNotCreateCartIfTheStockQuantityIsInsufficient(){
 
         var insufficientQuantity = 6;
         ProductToCart productToCart = new ProductToCart(
@@ -116,8 +116,8 @@ public class PostCartTest extends BaseCart {
     @Epic("EPIC - Cart Test Epic")
     @Feature("FEATURE - Posting carts")
     @Story("STORY - Carts")
-    @DisplayName("Must not create more than one cart by user")
-    public void mustNotCreateMoreThanOneCartByUser(){
+    @DisplayName("Should not create more than one cart by user")
+    void shouldNotCreateMoreThanOneCartByUser(){
 
         products.add(ProductId);
         createCart(products, token);
@@ -138,8 +138,8 @@ public class PostCartTest extends BaseCart {
     @Epic("EPIC - Cart Test Epic")
     @Feature("FEATURE - Posting carts")
     @Story("STORY - Carts")
-    @DisplayName("Must not create a cart by user without authentication")
-    public void mustNotCreateCartByUserWithoutAuthentication(){
+    @DisplayName("Should not create a cart by user without authentication")
+    void shouldNotCreateCartByUserWithoutAuthentication(){
 
         products.add(ProductId);
 

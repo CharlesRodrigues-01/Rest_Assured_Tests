@@ -14,14 +14,14 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static br.com.zup.serverest.builder.UserBuilder.*;
 
-public class PostUserTest extends BaseApi {
+class PostUserTest extends BaseApi {
 
     @Test
     @Epic("EPIC - User Test Epic")
     @Feature("FEATURE - Posting users")
     @Story("STORY - User")
-    @DisplayName("Must create a user")
-    public void mustCreateUser(){
+    @DisplayName("Should create a user")
+    void shouldCreateUser(){
 
         String userId = given()
                 .contentType(ContentType.JSON)
@@ -39,8 +39,8 @@ public class PostUserTest extends BaseApi {
     @Epic("EPIC - User Test Epic")
     @Feature("FEATURE - Posting users")
     @Story("STORY - User")
-    @DisplayName("Must not create a user with existing e-mail")
-    public void mustNotCreateUserWithExistingEmail() {
+    @DisplayName("Should not create a user with existing e-mail")
+    void shouldNotCreateUserWithExistingEmail() {
 
         var userId = createUser();
 
@@ -59,8 +59,8 @@ public class PostUserTest extends BaseApi {
     @Epic("EPIC - User Test Epic")
     @Feature("FEATURE - Posting users")
     @Story("STORY - User")
-    @DisplayName("Must not create a user with blank name")
-    public void mustNotCreateUserWithBlankName(){
+    @DisplayName("Should not create a user with blank name")
+    void shouldNotCreateUserWithBlankName(){
 
         User newUser = buildUser();
         newUser.setNome("");
@@ -78,8 +78,8 @@ public class PostUserTest extends BaseApi {
     @Epic("EPIC - User Test Epic")
     @Feature("FEATURE - Posting users")
     @Story("STORY - User")
-    @DisplayName("Must not create a user with invalid e-mail")
-    public void mustNotCreateUserWithInvalidEmail(){
+    @DisplayName("Should not create a user with invalid e-mail")
+    void shouldNotCreateUserWithInvalidEmail(){
 
         User newUser = buildUser();
         newUser.setEmail("testeqa.com.br");
@@ -97,8 +97,8 @@ public class PostUserTest extends BaseApi {
     @Epic("EPIC - User Test Epic")
     @Feature("FEATURE - Posting users")
     @Story("STORY - User")
-    @DisplayName("Must not create a user with blank e-mail")
-    public void mustNotCreateUserWithBlankEmail(){
+    @DisplayName("Should not create a user with blank e-mail")
+    void shouldNotCreateUserWithBlankEmail(){
 
         User newUser = buildUser();
         newUser.setEmail("");
@@ -116,8 +116,8 @@ public class PostUserTest extends BaseApi {
     @Epic("EPIC - User Test Epic")
     @Feature("FEATURE - Posting users")
     @Story("STORY - User")
-    @DisplayName("Must not create a user with blank password")
-    public void mustNotCreateUserWithBlankPassword(){
+    @DisplayName("Should not create a user with blank password")
+    void shouldNotCreateUserWithBlankPassword(){
 
         User newUser = buildUser();
         newUser.setPassword("");
@@ -135,8 +135,8 @@ public class PostUserTest extends BaseApi {
     @Epic("EPIC - User Test Epic")
     @Feature("FEATURE - Posting users")
     @Story("STORY - User")
-    @DisplayName("Must not create a user with blank administrator")
-    public void mustNotCreateUserWithBlankAdministrator(){
+    @DisplayName("Should not create a user with blank administrator")
+    void shouldNotCreateUserWithBlankAdministrator(){
 
         User newUser = buildUser();
         newUser.setAdministrador("");

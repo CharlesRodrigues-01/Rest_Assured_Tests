@@ -16,7 +16,7 @@ import static br.com.zup.serverest.builder.CartBuilder.deleteCart;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class DeleteCartReturnInventoryTest extends BaseCart {
+class DeleteCartReturnInventoryTest extends BaseCart {
 
     private List<String> products = new ArrayList<>();
 
@@ -24,8 +24,8 @@ public class DeleteCartReturnInventoryTest extends BaseCart {
     @Epic("EPIC - Cart Test Epic")
     @Feature("FEATURE - Deleting carts and return inventory")
     @Story("STORY - Carts")
-    @DisplayName("Must delete a product and return inventory")
-    public void mustDeleteProductAndReturnInventory() {
+    @DisplayName("Should delete a product and return inventory")
+    void shouldDeleteProductAndReturnInventory() {
 
         products.add(ProductId);
         createCart(products, token);
@@ -45,7 +45,7 @@ public class DeleteCartReturnInventoryTest extends BaseCart {
     @Feature("FEATURE - Deleting carts and return inventory")
     @Story("STORY - Carts")
     @DisplayName("Should return error when cart doesn't exist")
-    public void shouldReturnErrorWhenCartDoesNotExist() {
+    void shouldReturnErrorWhenCartDoesNotExist() {
 
         given()
                 .header("Authorization", token)
@@ -60,8 +60,9 @@ public class DeleteCartReturnInventoryTest extends BaseCart {
     @Test
     @Epic("EPIC - Cart Test Epic")
     @Feature("FEATURE - Deleting carts and return inventory")
-    @Story("STORY - Carts")    @DisplayName("Must not delete a  cart by user without authentication")
-    public void mustNotDeleteCartByUserWithoutAuthentication() {
+    @Story("STORY - Carts")
+    @DisplayName("Should not delete a  cart by user without authentication")
+    void shouldNotDeleteCartByUserWithoutAuthentication() {
 
         products.add(ProductId);
         createCart(products, token);

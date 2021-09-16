@@ -1,13 +1,13 @@
 package br.com.zup.serverest.builder;
 
-import io.restassured.http.ContentType;
 import br.com.zup.serverest.model.Product;
-import org.apache.http.HttpStatus;
+import io.restassured.http.ContentType;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
 
 public class ProductBuilder {
+
+    private ProductBuilder() {}
 
     public static Product buildProduct() {
         return new Product("TV", 2900, "LG", 5);
