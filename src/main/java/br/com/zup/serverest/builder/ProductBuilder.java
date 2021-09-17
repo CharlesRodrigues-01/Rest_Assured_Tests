@@ -16,19 +16,17 @@ public class ProductBuilder {
     public static String createProduct(String token) {
 
         return given()
-                .contentType(ContentType.JSON)
-                .header("Authorization", token)
-                .body(buildProduct())
+                    .contentType(ContentType.JSON)
+                    .header("Authorization", token)
+                    .body(buildProduct())
                 .when().post("produtos")
-                .then().log().all()
-                .extract().path("_id");
+                .then()
+                    .extract().path("_id");
     }
 
     public static void deleteProduct(String userId, String token){
         given().header("Authorization", token)
-                .when().delete("produtos/"+ userId)
-                .then()
-                .log().all();
+            .when().delete("produtos/"+ userId);
     }
 
     public static Integer getAmountOfProducts(String typeSearch, String parameter){

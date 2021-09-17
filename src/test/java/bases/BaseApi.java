@@ -1,13 +1,13 @@
 package bases;
 
+import br.com.zup.serverest.factory.SimulationDataFactory;
 import org.junit.jupiter.api.BeforeAll;
-
-import java.io.FileInputStream;
-import java.util.Properties;
 
 import static io.restassured.RestAssured.baseURI;
 
 public abstract class BaseApi {
+
+    protected static SimulationDataFactory simulationDataFactory = new SimulationDataFactory();
 
     @BeforeAll
     public static void beforeAllTests() {

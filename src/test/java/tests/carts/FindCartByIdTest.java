@@ -22,8 +22,6 @@ import static org.hamcrest.Matchers.equalTo;
 
 class FindCartByIdTest extends BaseApi {
 
-    protected static SimulationDataFactory simulationDataFactory = new SimulationDataFactory();
-
     @Test
     @Epic("EPIC - Cart Test Epic")
     @Feature("FEATURE - Finding carts")
@@ -39,9 +37,8 @@ class FindCartByIdTest extends BaseApi {
         var cartId = createCart(products, token);
 
         given()
-                .when().get("carrinhos/"+ cartId)
-                .then()
-                .log().all()
+            .when().get("carrinhos/"+ cartId)
+            .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)
                 .body("_id", equalTo(cartId));
@@ -60,9 +57,8 @@ class FindCartByIdTest extends BaseApi {
         var nonExistentId = simulationDataFactory.generateId();
 
         given()
-                .when().get("carrinhos/"+ nonExistentId)
-                .then()
-                .log().all()
+            .when().get("carrinhos/"+ nonExistentId)
+            .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_BAD_REQUEST)
                 .body("message", equalTo("Carrinho não encontrado"));

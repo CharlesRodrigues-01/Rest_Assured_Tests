@@ -1,6 +1,7 @@
 package tests.products;
 
 import bases.BaseApi;
+import br.com.zup.serverest.builder.ProductBuilder;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -43,13 +44,12 @@ public class GetProductsTest extends BaseApi {
     void shouldFindProductByID(){
 
         given().param("_id", productId)
-                .when().get("produtos")
-                .then()
-                .log().all()
+            .when().get("produtos")
+            .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)
-                .body("produtos.size()", equalTo(getAmountOfProducts("_id", productId)))
-                .body("produtos.get(0)._id", equalTo(productId));
+                .body("produtos.size()", equalTo(getAmountOfProducts("_id", productId)),
+                "produtos.get(0)._id", equalTo(productId));
     }
 
     @Test
@@ -58,16 +58,15 @@ public class GetProductsTest extends BaseApi {
     @Story("STORY - Products")
     @DisplayName("Should find a product by name")
     void shouldFindProductByName(){
-        var name = "TV";
+        var name = ProductBuilder.buildProduct().getNome();
 
         given().param("nome", name)
-                .when().get("produtos")
-                .then()
-                .log().all()
+            .when().get("produtos")
+            .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)
-                .body("produtos.size()", equalTo(getAmountOfProducts("nome", name)))
-                .body("produtos.get(0).nome", equalTo(name));
+                .body("produtos.size()", equalTo(getAmountOfProducts("nome", name)),
+                "produtos.get(0).nome", equalTo(name));
     }
 
     @Test
@@ -76,16 +75,15 @@ public class GetProductsTest extends BaseApi {
     @Story("STORY - Products")
     @DisplayName("Should find a product by price")
     void shouldFindProductByPrice(){
-        var price = "2900";
+        var price = ProductBuilder.buildProduct().getPreco().toString();
 
         given().param("preco", price)
-                .when().get("produtos")
-                .then()
-                .log().all()
+            .when().get("produtos")
+            .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)
-                .body("produtos.size()", equalTo(getAmountOfProducts("preco", price)))
-                .body("produtos.get(0).preco", equalTo(Integer.parseInt(price)));
+                .body("produtos.size()", equalTo(getAmountOfProducts("preco", price)),
+                "produtos.get(0).preco", equalTo(Integer.parseInt(price)));
     }
 
     @Test
@@ -94,16 +92,15 @@ public class GetProductsTest extends BaseApi {
     @Story("STORY - Products")
     @DisplayName("Should find a product by description")
     void shouldFindProductByDescription(){
-        var description = "LG";
+        var description = ProductBuilder.buildProduct().getDescricao();
 
         given().param("descricao", description)
-                .when().get("produtos")
-                .then()
-                .log().all()
+            .when().get("produtos")
+            .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)
-                .body("produtos.size()", equalTo(getAmountOfProducts("descricao", description)))
-                .body("produtos.get(0).descricao", equalTo(description));
+                .body("produtos.size()", equalTo(getAmountOfProducts("descricao", description)),
+                "produtos.get(0).descricao", equalTo(description));
     }
 
     @Test
@@ -112,15 +109,14 @@ public class GetProductsTest extends BaseApi {
     @Story("STORY - Products")
     @DisplayName("Should find a product by amount")
     void shouldFindProductByAmount(){
-        var amount = "5";
+        var amount = ProductBuilder.buildProduct().getQuantidade().toString();
 
         given().param("quantidade", amount)
-                .when().get("produtos")
-                .then()
-                .log().all()
+            .when().get("produtos")
+            .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)
-                .body("produtos.size()", equalTo(getAmountOfProducts("quantidade", amount)))
-                .body("produtos.get(0).quantidade", equalTo(Integer.parseInt(amount)));
+                .body("produtos.size()", equalTo(getAmountOfProducts("quantidade", amount)),
+                "produtos.get(0).quantidade", equalTo(Integer.parseInt(amount)));
     }
 }

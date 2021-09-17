@@ -21,7 +21,6 @@ import static org.hamcrest.Matchers.equalTo;
 
 class DeleteProductTest extends BaseProduct {
 
-    protected static SimulationDataFactory simulationDataFactory = new SimulationDataFactory();
     private final String nonExistentId = simulationDataFactory.generateId();
     private final List<String> products = new ArrayList<>();
 
@@ -36,9 +35,8 @@ class DeleteProductTest extends BaseProduct {
 
         given()
                 .header("Authorization", token)
-                .when().delete("produtos/"+ productId)
-                .then()
-                .log().all()
+            .when().delete("produtos/"+ productId)
+            .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)
                 .body("message", equalTo("Registro excluído com sucesso"));
@@ -53,9 +51,8 @@ class DeleteProductTest extends BaseProduct {
 
         given()
                 .header("Authorization", token)
-                .when().delete("produtos/"+ nonExistentId)
-                .then()
-                .log().all()
+            .when().delete("produtos/"+ nonExistentId)
+            .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)
                 .body("message", equalTo("Nenhum registro excluído"));
@@ -71,9 +68,8 @@ class DeleteProductTest extends BaseProduct {
         var productId = createProduct(token);
 
         given()
-                .when().delete("produtos/"+ productId)
-                .then()
-                .log().all()
+            .when().delete("produtos/"+ productId)
+            .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_UNAUTHORIZED)
                 .body("message", equalTo("Token de acesso ausente, inválido, expirado ou usuário " +
@@ -96,9 +92,8 @@ class DeleteProductTest extends BaseProduct {
 
         given()
                 .header("Authorization", token)
-                .when().delete("produtos/"+ productId)
-                .then()
-                .log().all()
+            .when().delete("produtos/"+ productId)
+            .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_FORBIDDEN)
                 .body("message", equalTo("Rota exclusiva para administradores"));
@@ -120,9 +115,8 @@ class DeleteProductTest extends BaseProduct {
 
         given()
                 .header("Authorization", token)
-                .when().delete("produtos/"+ productId)
-                .then()
-                .log().all()
+            .when().delete("produtos/"+ productId)
+            .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_BAD_REQUEST)
                 .body("message", equalTo("Não é permitido excluir produto que faz parte de carrinho"));

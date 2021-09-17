@@ -16,7 +16,6 @@ import static br.com.zup.serverest.builder.UserBuilder.*;
 
 class UpdateUserTest extends BaseApi {
 
-    protected static SimulationDataFactory simulationDataFactory = new SimulationDataFactory();
     private final String nonExistentId = simulationDataFactory.generateId();
 
     @Test
@@ -27,13 +26,13 @@ class UpdateUserTest extends BaseApi {
     void shouldCreateAnUserIfIDDoesNotExist(){
 
         String userId = given()
-                .contentType(ContentType.JSON)
-                .body(buildUser())
+                    .contentType(ContentType.JSON)
+                    .body(buildUser())
                 .when().put("usuarios/"+nonExistentId)
-                .then().log().all()
-                .statusCode(HttpStatus.SC_CREATED)
-                .body("message", equalTo("Cadastro realizado com sucesso"))
-                .extract().path("_id");
+                .then()
+                    .statusCode(HttpStatus.SC_CREATED)
+                    .body("message", equalTo("Cadastro realizado com sucesso"))
+                    .extract().path("_id");
 
         deleteUser(userId);
     }
@@ -55,8 +54,8 @@ class UpdateUserTest extends BaseApi {
         given()
                 .contentType(ContentType.JSON)
                 .body(updatedUser)
-                .when().put("usuarios/"+userId)
-                .then().log().all()
+            .when().put("usuarios/"+userId)
+            .then()
                 .statusCode(HttpStatus.SC_OK)
                 .body("message", equalTo("Registro alterado com sucesso"));
 
@@ -79,8 +78,8 @@ class UpdateUserTest extends BaseApi {
         given()
                 .contentType(ContentType.JSON)
                 .body(updatedUser)
-                .when().put("usuarios/"+nonExistentId)
-                .then().log().all()
+            .when().put("usuarios/"+nonExistentId)
+            .then()
                 .statusCode(HttpStatus.SC_BAD_REQUEST)
                 .body("message", equalTo("Este email já está sendo usado"));
 

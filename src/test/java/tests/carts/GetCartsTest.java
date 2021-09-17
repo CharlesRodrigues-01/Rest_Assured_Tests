@@ -52,13 +52,12 @@ public class GetCartsTest extends BaseApi {
     void shouldFindCartByID(){
 
         given().param("_id", cartId)
-                .when().get("carrinhos")
-                .then()
-                .log().all()
+            .when().get("carrinhos")
+            .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)
-                .body("carrinhos.size()", equalTo(getAmountOfCarts("_id", cartId)))
-                .body("carrinhos.get(0)._id", equalTo(cartId));
+                .body("carrinhos.size()", equalTo(getAmountOfCarts("_id", cartId)),
+                "carrinhos.get(0)._id", equalTo(cartId));
     }
 
     @Test
@@ -70,13 +69,12 @@ public class GetCartsTest extends BaseApi {
         var totalPrice = "2900";
 
         given().param("precoTotal", totalPrice)
-                .when().get("carrinhos")
-                .then()
-                .log().all()
+            .when().get("carrinhos")
+            .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)
-                .body("carrinhos.size()", equalTo(getAmountOfCarts("precoTotal", totalPrice)))
-                .body("carrinhos.get(0).precoTotal", equalTo(Integer.parseInt(totalPrice)));
+                .body("carrinhos.size()", equalTo(getAmountOfCarts("precoTotal", totalPrice)),
+                "carrinhos.get(0).precoTotal", equalTo(Integer.parseInt(totalPrice)));
     }
 
     @Test
@@ -88,13 +86,12 @@ public class GetCartsTest extends BaseApi {
         var totalAmount = "1";
 
         given().param("quantidadeTotal", totalAmount)
-                .when().get("carrinhos")
-                .then()
-                .log().all()
+            .when().get("carrinhos")
+            .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)
-                .body("carrinhos.size()", equalTo(getAmountOfCarts("quantidadeTotal", totalAmount)))
-                .body("carrinhos.get(0).quantidadeTotal", equalTo(Integer.parseInt(totalAmount)));
+                .body("carrinhos.size()", equalTo(getAmountOfCarts("quantidadeTotal", totalAmount)),
+                "carrinhos.get(0).quantidadeTotal", equalTo(Integer.parseInt(totalAmount)));
     }
 
     @Test
@@ -105,12 +102,11 @@ public class GetCartsTest extends BaseApi {
     void shouldFindCartByUserId(){
 
         given().param("idUsuario", userId)
-                .when().get("carrinhos")
-                .then()
-                .log().all()
+            .when().get("carrinhos")
+            .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)
-                .body("carrinhos.size()", equalTo(getAmountOfCarts("idUsuario", userId)))
-                .body("carrinhos.get(0).idUsuario", equalTo(userId));
+                .body("carrinhos.size()", equalTo(getAmountOfCarts("idUsuario", userId)),
+                "carrinhos.get(0).idUsuario", equalTo(userId));
     }
 }

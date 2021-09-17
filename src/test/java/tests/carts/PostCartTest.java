@@ -21,7 +21,6 @@ import static org.hamcrest.Matchers.equalTo;
 
 class PostCartTest extends BaseCart {
 
-    protected static SimulationDataFactory simulationDataFactory = new SimulationDataFactory();
     private List<String> products = new ArrayList<>();
     private List<ProductToCart> productsList = new ArrayList<>();
 
@@ -38,8 +37,8 @@ class PostCartTest extends BaseCart {
                 .contentType(ContentType.JSON)
                 .header("Authorization", token)
                 .body(buildCart(products))
-                .when().post("carrinhos")
-                .then().log().all()
+            .when().post("carrinhos")
+            .then()
                 .statusCode(HttpStatus.SC_CREATED)
                 .body("message", equalTo("Cadastro realizado com sucesso"));
 
@@ -60,8 +59,8 @@ class PostCartTest extends BaseCart {
                 .contentType(ContentType.JSON)
                 .header("Authorization", token)
                 .body(buildCart(products))
-                .when().post("carrinhos")
-                .then().log().all()
+            .when().post("carrinhos")
+            .then()
                 .statusCode(HttpStatus.SC_BAD_REQUEST)
                 .body("message", equalTo("Não é permitido possuir produto duplicado"));
 
@@ -84,11 +83,10 @@ class PostCartTest extends BaseCart {
                 .contentType(ContentType.JSON)
                 .header("Authorization", token)
                 .body(cartWithUnregisteredProduct)
-                .when().post("carrinhos")
-                .then().log().all()
+            .when().post("carrinhos")
+            .then()
                 .statusCode(HttpStatus.SC_BAD_REQUEST)
                 .body("message", equalTo("Produto não encontrado"));
-
     }
 
     @Test
@@ -108,8 +106,8 @@ class PostCartTest extends BaseCart {
                 .contentType(ContentType.JSON)
                 .header("Authorization", token)
                 .body(cartWithStockQuantityIsInsufficient)
-                .when().post("carrinhos")
-                .then().log().all()
+            .when().post("carrinhos")
+            .then()
                 .statusCode(HttpStatus.SC_BAD_REQUEST)
                 .body("message", equalTo("Produto não possui quantidade suficiente"));
     }
@@ -128,8 +126,8 @@ class PostCartTest extends BaseCart {
                 .contentType(ContentType.JSON)
                 .header("Authorization", token)
                 .body(buildCart(products))
-                .when().post("carrinhos")
-                .then().log().all()
+            .when().post("carrinhos")
+            .then()
                 .statusCode(HttpStatus.SC_BAD_REQUEST)
                 .body("message", equalTo("Não é permitido ter mais de 1 carrinho"));
 
@@ -148,8 +146,8 @@ class PostCartTest extends BaseCart {
         given()
                 .contentType(ContentType.JSON)
                 .body(buildCart(products))
-                .when().post("carrinhos")
-                .then().log().all()
+            .when().post("carrinhos")
+            .then()
                 .statusCode(HttpStatus.SC_UNAUTHORIZED)
                 .body("message", equalTo("Token de acesso ausente, inválido, expirado ou usuário " +
                         "do token não existe mais"));

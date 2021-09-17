@@ -1,6 +1,7 @@
 package tests.users;
 
 import bases.BaseApi;
+import br.com.zup.serverest.builder.UserBuilder;
 import br.com.zup.serverest.factory.SimulationDataFactory;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
@@ -35,13 +36,12 @@ public class GetUsersTest extends BaseApi {
     void shouldFindUserByID(){
 
         given().param("_id", userId)
-                .when().get("usuarios")
-                .then()
-                .log().all()
+            .when().get("usuarios")
+            .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)
-                .body("usuarios.size()", equalTo(getAmountOfUsers("_id", userId)))
-                .body("usuarios.get(0)._id", equalTo(userId));
+                .body("usuarios.size()", equalTo(getAmountOfUsers("_id", userId)),
+                        "usuarios.get(0)._id", equalTo(userId));
     }
 
     @Test
@@ -51,16 +51,15 @@ public class GetUsersTest extends BaseApi {
     @DisplayName("Should find a user by name")
     void shouldFindUserByName(){
 
-        var name = "Authorized User";
+        var name =  UserBuilder.buildUser().getNome();
 
         given().param("nome", name)
-                .when().get("usuarios")
-                .then()
-                .log().all()
+            .when().get("usuarios")
+            .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)
-                .body("usuarios.size()", equalTo(getAmountOfUsers("nome", name)))
-                .body("usuarios.get(0).nome", equalTo(name));
+                .body("usuarios.size()", equalTo(getAmountOfUsers("nome", name)),
+                "usuarios.get(0).nome", equalTo(name));
     }
 
     @Test
@@ -69,16 +68,15 @@ public class GetUsersTest extends BaseApi {
     @Story("STORY - User")
     @DisplayName("Should find a user by e-mail")
     void shouldFindUserByEmail(){
-        var email = "authorized@qa.com.br";
+        var email = UserBuilder.buildUser().getEmail();
 
         given().param("email", email)
-                .when().get("usuarios")
-                .then()
-                .log().all()
+            .when().get("usuarios")
+            .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)
-                .body("usuarios.size()", equalTo(getAmountOfUsers("email", email)))
-                .body("usuarios.get(0).email", equalTo(email));
+                .body("usuarios.size()", equalTo(getAmountOfUsers("email", email)),
+                "usuarios.get(0).email", equalTo(email));
     }
 
     @Test
@@ -87,15 +85,14 @@ public class GetUsersTest extends BaseApi {
     @Story("STORY - User")
     @DisplayName("Should find a user by password")
     void shouldFindUserByPassword(){
-        var password = "12test";
+        var password = UserBuilder.buildUser().getPassword();
 
         given().param("password", password)
-                .when().get("usuarios")
-                .then()
-                .log().all()
+            .when().get("usuarios")
+            .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)
-                .body("usuarios.size()", equalTo(getAmountOfUsers("password", password)))
-                .body("usuarios.get(0).password", equalTo(password));
+                .body("usuarios.size()", equalTo(getAmountOfUsers("password", password)),
+                "usuarios.get(0).password", equalTo(password));
     }
 }

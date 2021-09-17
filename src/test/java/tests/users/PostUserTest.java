@@ -24,13 +24,13 @@ class PostUserTest extends BaseApi {
     void shouldCreateUser(){
 
         String userId = given()
-                .contentType(ContentType.JSON)
-                .body(buildUser())
+                    .contentType(ContentType.JSON)
+                    .body(buildUser())
                 .when().post("usuarios")
-                .then().log().all()
-                .statusCode(HttpStatus.SC_CREATED)
-                .body("message", equalTo("Cadastro realizado com sucesso"))
-                .extract().path("_id");
+                .then()
+                    .statusCode(HttpStatus.SC_CREATED)
+                    .body("message", equalTo("Cadastro realizado com sucesso"))
+                    .extract().path("_id");
 
         deleteUser(userId);
     }
@@ -47,8 +47,8 @@ class PostUserTest extends BaseApi {
         given()
                 .contentType(ContentType.JSON)
                 .body(buildUser())
-                .when().post("usuarios")
-                .then().log().all()
+            .when().post("usuarios")
+            .then()
                 .statusCode(HttpStatus.SC_BAD_REQUEST)
                 .body("message", equalTo("Este email já está sendo usado"));
 
@@ -68,8 +68,8 @@ class PostUserTest extends BaseApi {
         given()
                 .contentType(ContentType.JSON)
                 .body(newUser)
-                .when().post("usuarios")
-                .then().log().all()
+            .when().post("usuarios")
+            .then()
                 .statusCode(HttpStatus.SC_BAD_REQUEST)
                 .body("nome", equalTo("nome não pode ficar em branco"));
     }
@@ -87,8 +87,8 @@ class PostUserTest extends BaseApi {
         given()
                 .contentType(ContentType.JSON)
                 .body(newUser)
-                .when().post("usuarios")
-                .then().log().all()
+            .when().post("usuarios")
+            .then()
                 .statusCode(HttpStatus.SC_BAD_REQUEST)
                 .body("email", equalTo("email deve ser um email válido"));
     }
@@ -106,8 +106,8 @@ class PostUserTest extends BaseApi {
         given()
                 .contentType(ContentType.JSON)
                 .body(newUser)
-                .when().post("usuarios")
-                .then().log().all()
+            .when().post("usuarios")
+            .then()
                 .statusCode(HttpStatus.SC_BAD_REQUEST)
                 .body("email", equalTo("email não pode ficar em branco"));
     }
@@ -125,8 +125,8 @@ class PostUserTest extends BaseApi {
         given()
                 .contentType(ContentType.JSON)
                 .body(newUser)
-                .when().post("usuarios")
-                .then().log().all()
+            .when().post("usuarios")
+            .then()
                 .statusCode(HttpStatus.SC_BAD_REQUEST)
                 .body("password", equalTo("password não pode ficar em branco"));
     }
@@ -144,8 +144,8 @@ class PostUserTest extends BaseApi {
         given()
                 .contentType(ContentType.JSON)
                 .body(newUser)
-                .when().post("usuarios")
-                .then().log().all()
+            .when().post("usuarios")
+            .then()
                 .statusCode(HttpStatus.SC_BAD_REQUEST)
                 .body("administrador", equalTo("administrador deve ser 'true' ou 'false'"));
     }

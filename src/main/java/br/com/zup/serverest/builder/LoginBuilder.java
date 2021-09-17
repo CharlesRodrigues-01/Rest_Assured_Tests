@@ -15,10 +15,10 @@ public class LoginBuilder {
 
     public static String getToken() {
         return given()
-                .contentType(ContentType.JSON)
-                .body(buildLogin())
+                    .contentType(ContentType.JSON)
+                    .body(buildLogin())
                 .when().post("login")
-                .then().log().all()
-                .extract().path("authorization");
+                .then()
+                    .extract().path("authorization");
     }
 }

@@ -32,9 +32,8 @@ class DeleteCartReturnInventoryTest extends BaseCart {
 
         given()
                 .header("Authorization", token)
-                .when().delete("carrinhos/cancelar-compra")
-                .then()
-                .log().all()
+            .when().delete("carrinhos/cancelar-compra")
+            .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)
                 .body("message", equalTo("Registro excluído com sucesso. Estoque dos produtos reabastecido"));
@@ -49,9 +48,8 @@ class DeleteCartReturnInventoryTest extends BaseCart {
 
         given()
                 .header("Authorization", token)
-                .when().delete("carrinhos/cancelar-compra")
-                .then()
-                .log().all()
+            .when().delete("carrinhos/cancelar-compra")
+            .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)
                 .body("message", equalTo("Não foi encontrado carrinho para esse usuário"));
@@ -68,9 +66,8 @@ class DeleteCartReturnInventoryTest extends BaseCart {
         createCart(products, token);
 
         given()
-                .when().delete("carrinhos/cancelar-compra")
-                .then()
-                .log().all()
+            .when().delete("carrinhos/cancelar-compra")
+            .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_UNAUTHORIZED)
                 .body("message", equalTo("Token de acesso ausente, inválido, expirado ou usuário " +

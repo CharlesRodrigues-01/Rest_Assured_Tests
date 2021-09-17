@@ -28,9 +28,8 @@ class FindProductByIdTest extends BaseApi {
         var productId = createProduct(token);
 
         given()
-                .when().get("produtos/"+ productId)
-                .then()
-                .log().all()
+            .when().get("produtos/"+ productId)
+            .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)
                 .body("_id", equalTo(productId));
@@ -48,9 +47,8 @@ class FindProductByIdTest extends BaseApi {
         var nonExistentId = "123";
 
         given()
-                .when().get("produtos/"+ nonExistentId)
-                .then()
-                .log().all()
+            .when().get("produtos/"+ nonExistentId)
+            .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_BAD_REQUEST)
                 .body("message", equalTo("Produto não encontrado"));

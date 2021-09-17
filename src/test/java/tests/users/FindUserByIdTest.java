@@ -1,7 +1,6 @@
 package tests.users;
 
 import bases.BaseApi;
-import br.com.zup.serverest.factory.SimulationDataFactory;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -9,13 +8,12 @@ import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static br.com.zup.serverest.builder.UserBuilder.createUser;
+import static br.com.zup.serverest.builder.UserBuilder.deleteUser;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
-import static br.com.zup.serverest.builder.UserBuilder.*;
 
 class FindUserByIdTest extends BaseApi {
-
-    protected static SimulationDataFactory simulationDataFactory = new SimulationDataFactory();
 
     @Test
     @Epic("EPIC - User Test Epic")
@@ -26,9 +24,8 @@ class FindUserByIdTest extends BaseApi {
         var userId = createUser();
 
         given()
-                .when().get("usuarios/"+ userId)
-                .then()
-                .log().all()
+            .when().get("usuarios/"+ userId)
+            .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)
                 .body("_id", equalTo(userId));
@@ -45,9 +42,8 @@ class FindUserByIdTest extends BaseApi {
         var nonExistentId = simulationDataFactory.generateId();
 
         given()
-                .when().get("usuarios/"+ nonExistentId)
-                .then()
-                .log().all()
+            .when().get("usuarios/"+ nonExistentId)
+            .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_BAD_REQUEST)
                 .body("message", equalTo("Usuário não encontrado"));

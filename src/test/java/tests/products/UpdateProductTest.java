@@ -17,7 +17,6 @@ import static br.com.zup.serverest.builder.UserBuilder.*;
 
 class UpdateProductTest extends BaseProduct {
 
-    protected static SimulationDataFactory simulationDataFactory = new SimulationDataFactory();
     private String nonExistentId = simulationDataFactory.generateId();
 
     @Test
@@ -31,8 +30,8 @@ class UpdateProductTest extends BaseProduct {
                 .header("Authorization", token)
                 .contentType(ContentType.JSON)
                 .body(buildProduct())
-                .when().put("produtos/"+nonExistentId)
-                .then().log().all()
+            .when().put("produtos/"+nonExistentId)
+            .then()
                 .statusCode(HttpStatus.SC_CREATED)
                 .body("message", equalTo("Cadastro realizado com sucesso"))
                 .extract().path("_id");
@@ -60,8 +59,8 @@ class UpdateProductTest extends BaseProduct {
                 .header("Authorization", token)
                 .contentType(ContentType.JSON)
                 .body(updatedProduct)
-                .when().put("produtos/"+productId)
-                .then().log().all()
+            .when().put("produtos/"+productId)
+            .then()
                 .statusCode(HttpStatus.SC_OK)
                 .body("message", equalTo("Registro alterado com sucesso"));
 
@@ -81,8 +80,8 @@ class UpdateProductTest extends BaseProduct {
                 .header("Authorization", token)
                 .contentType(ContentType.JSON)
                 .body(buildProduct())
-                .when().put("produtos/"+nonExistentId)
-                .then().log().all()
+            .when().put("produtos/"+nonExistentId)
+            .then()
                 .statusCode(HttpStatus.SC_BAD_REQUEST)
                 .body("message", equalTo("Já existe produto com esse nome"));
 
@@ -104,8 +103,8 @@ class UpdateProductTest extends BaseProduct {
                 .header("Authorization", token)
                 .contentType(ContentType.JSON)
                 .body(buildProduct())
-                .when().put("produtos/"+nonExistentId)
-                .then().log().all()
+            .when().put("produtos/"+nonExistentId)
+            .then()
                 .statusCode(HttpStatus.SC_FORBIDDEN)
                 .body("message", equalTo("Rota exclusiva para administradores"));
 

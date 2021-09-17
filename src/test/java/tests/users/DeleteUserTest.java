@@ -22,7 +22,6 @@ import static br.com.zup.serverest.builder.UserBuilder.*;
 
 class DeleteUserTest extends BaseApi {
 
-    protected static SimulationDataFactory simulationDataFactory = new SimulationDataFactory();
     private String nonExistentId = simulationDataFactory.generateId();
 
     @Test
@@ -34,9 +33,8 @@ class DeleteUserTest extends BaseApi {
         var userId = createUser();
 
         given()
-                .when().delete("usuarios/"+ userId)
-                .then()
-                .log().all()
+            .when().delete("usuarios/"+ userId)
+            .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)
                 .body("message", equalTo("Registro excluído com sucesso"));
@@ -50,9 +48,8 @@ class DeleteUserTest extends BaseApi {
     void shouldReturnErrorWhenUserDoesNotExist() {
 
         given()
-                .when().delete("usuarios/"+ nonExistentId)
-                .then()
-                .log().all()
+            .when().delete("usuarios/"+ nonExistentId)
+            .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)
                 .body("message", equalTo("Nenhum registro excluído"));
@@ -74,9 +71,8 @@ class DeleteUserTest extends BaseApi {
         createCart(products, token);
 
         given()
-                .when().delete("usuarios/"+ userID)
-                .then()
-                .log().all()
+            .when().delete("usuarios/"+ userID)
+            .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_BAD_REQUEST)
                 .body("message", equalTo("Não é permitido excluir usuário com carrinho cadastrado"));

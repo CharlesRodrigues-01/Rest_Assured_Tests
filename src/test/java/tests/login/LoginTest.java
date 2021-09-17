@@ -17,8 +17,6 @@ import static br.com.zup.serverest.builder.UserBuilder.*;
 
  class LoginTest extends BaseApi {
 
-  protected static SimulationDataFactory simulationDataFactory = new SimulationDataFactory();
-
   @Test
     @Epic("EPIC - Login Test Epic")
     @Feature("FEATURE - Generating token")
@@ -31,8 +29,8 @@ import static br.com.zup.serverest.builder.UserBuilder.*;
         given()
                 .contentType(ContentType.JSON)
                 .body(buildLogin())
-                .when().post("login")
-                .then().log().all()
+            .when().post("login")
+            .then()
                 .statusCode(HttpStatus.SC_OK)
                 .body("message", equalTo("Login realizado com sucesso"));
 
@@ -52,8 +50,8 @@ import static br.com.zup.serverest.builder.UserBuilder.*;
         given()
                 .contentType(ContentType.JSON)
                 .body(login)
-                .when().post("login")
-                .then().log().all()
+            .when().post("login")
+            .then()
                 .statusCode(HttpStatus.SC_BAD_REQUEST)
                 .body("email", equalTo("email deve ser um email válido"));
     }
@@ -71,8 +69,8 @@ import static br.com.zup.serverest.builder.UserBuilder.*;
         given()
                 .contentType(ContentType.JSON)
                 .body(login)
-                .when().post("login")
-                .then().log().all()
+            .when().post("login")
+            .then()
                 .statusCode(HttpStatus.SC_UNAUTHORIZED)
                 .body("message", equalTo("Email e/ou senha inválidos"));
     }
@@ -90,8 +88,8 @@ import static br.com.zup.serverest.builder.UserBuilder.*;
         given()
                 .contentType(ContentType.JSON)
                 .body(login)
-                .when().post("login")
-                .then().log().all()
+            .when().post("login")
+            .then()
                 .statusCode(HttpStatus.SC_BAD_REQUEST)
                 .body("email", equalTo("email não pode ficar em branco"));
     }
@@ -109,8 +107,8 @@ import static br.com.zup.serverest.builder.UserBuilder.*;
         given()
                 .contentType(ContentType.JSON)
                 .body(login)
-                .when().post("login")
-                .then().log().all()
+            .when().post("login")
+            .then()
                 .statusCode(HttpStatus.SC_UNAUTHORIZED)
                 .body("message", equalTo("Email e/ou senha inválidos"));
     }
@@ -128,8 +126,8 @@ import static br.com.zup.serverest.builder.UserBuilder.*;
         given()
                 .contentType(ContentType.JSON)
                 .body(login)
-                .when().post("login")
-                .then().log().all()
+            .when().post("login")
+            .then()
                 .statusCode(HttpStatus.SC_BAD_REQUEST)
                 .body("password", equalTo("password não pode ficar em branco"));
     }

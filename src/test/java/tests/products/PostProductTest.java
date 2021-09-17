@@ -27,8 +27,8 @@ class PostProductTest extends BaseProduct {
                 .contentType(ContentType.JSON)
                 .header("Authorization", token)
                 .body(buildProduct())
-                .when().post("produtos")
-                .then().log().all()
+            .when().post("produtos")
+            .then()
                 .statusCode(HttpStatus.SC_CREATED)
                 .body("message", equalTo("Cadastro realizado com sucesso"))
                 .extract().path("_id");
@@ -49,8 +49,8 @@ class PostProductTest extends BaseProduct {
                 .contentType(ContentType.JSON)
                 .header("Authorization", token)
                 .body(buildProduct())
-                .when().post("produtos")
-                .then().log().all()
+            .when().post("produtos")
+            .then()
                 .statusCode(HttpStatus.SC_BAD_REQUEST)
                 .body("message", equalTo("Já existe produto com esse nome"));
 
@@ -67,8 +67,8 @@ class PostProductTest extends BaseProduct {
         given()
                 .contentType(ContentType.JSON)
                 .body(buildProduct())
-                .when().post("produtos")
-                .then().log().all()
+            .when().post("produtos")
+            .then()
                 .statusCode(HttpStatus.SC_UNAUTHORIZED)
                 .body("message", equalTo("Token de acesso ausente, inválido, expirado ou " +
                         "usuário do token não existe mais"));
@@ -89,8 +89,8 @@ class PostProductTest extends BaseProduct {
                 .contentType(ContentType.JSON)
                 .header("Authorization", token)
                 .body(buildProduct())
-                .when().post("produtos")
-                .then().log().all()
+            .when().post("produtos")
+            .then()
                 .statusCode(HttpStatus.SC_FORBIDDEN)
                 .body("message", equalTo("Rota exclusiva para administradores"))
                 .extract().path("_id");

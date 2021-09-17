@@ -30,19 +30,17 @@ public class CartBuilder {
     public static String createCart(List<String> products, String token) {
 
         return given()
-                .contentType(ContentType.JSON)
-                .header("Authorization", token)
-                .body(buildCart(products))
+                    .contentType(ContentType.JSON)
+                    .header("Authorization", token)
+                    .body(buildCart(products))
                 .when().post("carrinhos")
-                .then().log().all()
-                .extract().path("_id");
+                .then()
+                    .extract().path("_id");
     }
 
     public static void deleteCart(String token){
         given().header("Authorization", token)
-                .when().delete("carrinhos/cancelar-compra")
-                .then()
-                .log().all();
+                .when().delete("carrinhos/cancelar-compra");
     }
 
     public static Integer getAmountOfCarts(String typeSearch, String parameter){
